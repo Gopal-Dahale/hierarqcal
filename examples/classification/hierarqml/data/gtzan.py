@@ -50,7 +50,6 @@ class GTZAN(BaseDataModule):
         return parser
 
     def prepare_data(self, *args, **kwargs):
-        print("GENRS", self.genres)
         if self.data_path is None:
             raise ValueError("Dataset path is None")
 
