@@ -35,6 +35,7 @@ class BaseLitModel(pl.LightningModule):
         super().__init__()
         self.model = model
         self.args = vars(args) if args is not None else {}
+        self.save_hyperparameters(args)
 
         optimizer = self.args.get("optimizer", OPTIMIZER)
         self.optimizer_class = getattr(torch.optim, optimizer)
