@@ -6,7 +6,6 @@ from torch.utils.data import DataLoader, Dataset
 import argparse
 import os
 
-
 BATCH_SIZE = 128
 NUM_AVAIL_CPUS = len(os.sched_getaffinity(0))
 DEFAULT_NUM_WORKERS = NUM_AVAIL_CPUS
@@ -48,12 +47,10 @@ class BaseDataModule(pl.LightningDataModule):
         return {"input_dims": self.input_dims}
 
     def prepare_data(self, *args, **kwargs):
-        """Take the first steps to prepare data for use.
-        """
+        """Take the first steps to prepare data for use."""
 
     def setup(self, stage=None):
-        """Perform final setup to prepare data for consumption by DataLoader.
-        """
+        """Perform final setup to prepare data for consumption by DataLoader."""
 
     def train_dataloader(self):
         return DataLoader(
