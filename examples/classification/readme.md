@@ -1,6 +1,6 @@
 # HierarQML
 
-This tutorial guides on using HierarQcal to create quantum circuit models for classification tasks. It uses the modern stack of Pytorch Lightning and PennyLane for classical and quantum machine learning.
+This tutorial guides on using HierarQcal to create quantum circuit models for classification tasks. It uses the modern stack of Pytorch Lightning and PennyLane for classical and quantum machine learning. This project is designed to be easily reusable. You can also copy the entire `classification` directory to create a new, independent project based on this codebase.
 
 ## Setup
 
