@@ -4,7 +4,7 @@ This tutorial guides on using HierarQcal to create quantum circuit models for cl
 
 ## Setup
 
-Create a python environment and install the required packages using
+Create a Python environment and install the required packages using
 
 ```
 pip install -r requirements.text
@@ -31,27 +31,27 @@ To go through the main project structure, let's train a QCNN on GTZAN data.
 │   │   └── qcnn.py
 │   └── utils.py
 ├── notebooks
-│   └── temp.ipynb
+│   └── music_genre_classification.ipynb
 ├── readme.md
 ├── requirements.txt
 └── training
-    ├── ansatz.py
-    ├── __init__.py
-    ├── run_expt.py
-    └── util.py
+ ├── ansatz.py
+ ├── __init__.py
+ ├── run_expt.py
+ └── util.py
 ```
 
-The main code is is `hierarqml` and `training`. `training` is used to train and experiment with the models. Withing `hierarqml` we have `data`, and `models`. `notebooks` is used for exploration and demonstration purposes.
+The main code is `hierarqml` and `training`. `training` is used to train and experiment with the models. Within `hierarqml` we have `data` and `models`. `notebooks` is used for exploration and demonstration purposes.
 
 ### Data
 
-`base_data_module` which inherits from `pl.LightningDataModule` is a simple base class to avoid writing same boilerplate for the data sources. `gtzan` inherits from `base_data_module` and is the source for accessing the GTZAN dataset.
+`base_data_module` which inherits from `pl.LightningDataModule` is a simple base class to avoid writing the same boilerplate for the data sources. `gtzan` inherits from `base_data_module` and is the source for accessing the GTZAN dataset.
 
 ### Models
 
-We use PyTorch-Lightning for training, which defines the `LightningModule` interface that handles not only everything that a Model handles, but also specifies the details of the learning algorithm: what loss should be computed from the output of the model and the ground truth, which optimizer should be used, with what learning rate, etc. This is handled by the `base` file.
+We use PyTorch-Lightning for training, which defines the `LightningModule` interface that handles not only everything that a Model handles but also specifies the details of the learning algorithm: what loss should be computed from the output of the model and the ground truth, which optimizer should be used, with what learning rate, etc. This is handled by the `base` file.
 
-Users can define their quantum models by inheriting from `torch.nn.Module`. An example `qcnn` is defined by this way.
+Users can define their quantum models by inheriting from `torch.nn.Module`. An example `qcnn` is defined in this way.
 
 ## Training
 
@@ -68,6 +68,6 @@ python training/run_expt.py \
 --batch_size 16 --max_epochs 2 --lr 0.01
 ```
 
-Currently the HierarQcal motiff is defined int `training/ansatz` in the `get_motif` function. One can replate the code inside the function for custom motifs or can create separate python files with `get_motif` defined in them. That file path needs to be passed as a command line argument `--ansatz {file_path}`.
+Currently, the HierarQcal motif is defined int `training/ansatz` in the `get_motif` function. One can replace the code inside the function for custom motifs or can create separate Python files with `get_motif` defined in them. That file path needs to be passed as a command line argument `--ansatz {file_path}`.
 
-The data embedding is handled by the function `setup_data_and_model_from_args` inside `training/util`. Specifically, it calls the `get_circuit` method to obtain a `QNode` which will be passed to the Quantum PyTorch Model. Currently only angle and amplitude embedding are supported.
+The data embedding is handled by the function `setup_data_and_model_from_args` inside `training/util`. Specifically, it calls the `get_circuit` method to obtain a `QNode` which will be passed to the Quantum PyTorch Model. Currently, only angle and amplitude embedding are supported.
